@@ -2,7 +2,7 @@ from docx2pdf import convert #converting library
 import os
 from pathlib import Path
 from collections import deque
-names = []
+names = [] #list for the .docx files
 print("Hello welcome to the docxtopdf converter. Please specify the names of the files that you would like to make into pdfs without the .docx extension./n")
 num_files = int(input("Enter the number of files to convert: "))
 
@@ -14,7 +14,8 @@ for i in range(num_files):
 cwdfull = os.getcwd()
 os.system('mkdir Allpdfs')
 home = str(Path.home())
-frontier = deque()
+#Queue to store the absolute paths as the BFS algorithm navigates the file system
+frontier = deque() 
 frontier.append(home)
 #BFS algorithm to search through the direcotry tree
 while (frontier):
@@ -29,6 +30,7 @@ while (frontier):
         pathuptillnow = current
         
         for i in os.listdir():
+            #only look in Desktop, Documents and Downloads for files
             if(("Desktop" in (pathuptillnow +i)) or ("Documents" in (pathuptillnow + i)) or ("Downloads"in (pathuptillnow + i))):
                 frontier.append(pathuptillnow + '/' + i)
             if(current!=home):
