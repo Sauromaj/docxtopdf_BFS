@@ -1,0 +1,22 @@
+name: Continous Integration
+
+on:
+  push
+jobs:
+  #The name of the first job is Linting (all steps will run in the same runner) 
+  #each step is either a shell script or an action that will be run
+  Linting:
+    #The job will run on the latest version of ubuntu
+    runs-on: ubuntu-latest
+    #These are the particular actions that will be completed 
+    #(An action is a custom application for the GitHub Actions platform that performs a complex but frequenty repeated task)
+    steps:
+      - name: Checkout repo
+      - uses: actions/checkout@v2
+
+      - name: Install Pylint
+      - run: python -m pip install pylint
+
+      - name: Run Linting
+      #run linting in all filex with .py extension in all directories 
+      - run: pylint **/*.py
