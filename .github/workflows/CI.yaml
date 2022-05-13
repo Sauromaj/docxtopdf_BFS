@@ -12,11 +12,11 @@ jobs:
     #(An action is a custom application for the GitHub Actions platform that performs a complex but frequenty repeated task)
     steps:
       - name: Checkout repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Install Pylint
-      - run: python -m pip install pylint
+        run: python -m pip install pylint
 
       - name: Run Linting
       #run linting in all filex with .py extension in all directories 
-      - run: pylint **/*.py
+        run: pylint **/*.py
