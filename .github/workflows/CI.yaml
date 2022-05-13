@@ -19,4 +19,4 @@ jobs:
 
       - name: Run Linting
       #run linting in all filex with .py extension in all directories 
-        run: pylint **/*.py
+        run: pylint *.py
